@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import {Card} from '../components';
-import '../styles/product.scss'
+import '../styles/product.css'
 
 const Product = (props) => {
 

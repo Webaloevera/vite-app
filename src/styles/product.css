@@ -1,0 +1,39 @@
+.product__wrapper {
+    @apply  m-auto max-w-5xl;
+    max-width: 57.5rem;
+}
+
+.cards {
+    @apply  m-auto max-w-5xl flex flex-wrap gap-x-2.5 gap-y-2.5;
+    max-width: 57.5rem;
+}
+
+.cards .card {
+    width: 18.75rem;
+}
+
+
+.cards .card  img {
+    height: 12.5rem;
+    @apply object-cover;
+}
+
+@media (max-width: 960px) { 
+    .cards .card {
+        @apply  m-auto;
+            width: calc(50% - 5px);
+        }
+ }
+
+
+ @media (max-width: 500px) { 
+    .cards {
+        @apply justify-center;  
+    }
+    .cards .card {
+        @apply container;	
+        }
+        .cards .card img {
+            @apply h-auto
+        }
+ }

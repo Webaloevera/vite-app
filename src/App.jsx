@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Header, Footer } from './components';
 import { Home, Product } from './pages';
 import axios from "axios";
-import './styles/app.scss';
+import './styles/app.css';
 
 
 function App() {
@@ -29,8 +29,8 @@ useEffect(() => {
         <Header/>
           <main>
             <Routes>
-              <Route path='/' component={() => <Home store={appState}/>} exact/>
-              <Route path='/product' component={() => <Product store={appState}/>} exact/>
+              <Route path='/' element={<Home store={appState}/>} exact/>
+              <Route path='/product' element={<Product store={appState}/>} exact/>
             </Routes>
           </main>
         <Footer/>

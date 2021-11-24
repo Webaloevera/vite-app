@@ -1,0 +1,11 @@
+.card img {
+    @apply container;
+  }
+
+.card .card__text {
+    @apply container text-sm overflow-ellipsis overflow-hidden box-border;
+}
+
+.card .card__text p:first-child {
+    @apply text-gray-400; 
+}

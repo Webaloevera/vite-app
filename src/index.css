@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root{
+  @apply h-full m-0;
+}
+
+body {
+  @apply flex flex-col font-sans;
+}
+

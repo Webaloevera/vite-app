@@ -1,0 +1,7 @@
+.App{
+  @apply m-0 flex flex-col h-full;
+}
+
+main {
+    @apply flex-grow py-2.5 px-5;
+ }

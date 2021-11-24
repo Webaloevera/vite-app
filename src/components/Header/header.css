@@ -1,25 +1,16 @@
-/* header {
-    padding: 0px 20px;
-    background: #002B32;
-    display: flex;
-    align-items: center;
-    flex: 0 0 auto;
-    .logo {
-        img {
-            width: 80px;
-        }
-    }
-    nav ul {
-        display: flex;
-        li {        
-        a {
-            color: #fff;
-            padding: 0px 10px;
-            font-size: 1em;
-            text-transform: uppercase;
-        }
-        }
-    }
-} */
-
-
+.header {
+    @apply p-2.5 flex bg-dark-green text-white flex-none items-center;
+  }
+  
+  .logo {
+    @apply w-20;
+  }
+  
+  .header nav ul {
+    @apply flex;
+  }
+  
+  .header nav ul li a {
+    @apply text-white px-2.5 text-base uppercase ;
+  }
+  
