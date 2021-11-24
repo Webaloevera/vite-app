@@ -1,45 +1,43 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { Route, Routes } from "react-router";
+import React, { useEffect, useState } from 'react';
+import { Header, Footer } from './components';
+import { Home, Product } from './pages';
+import axios from "axios";
+import './styles/app.scss';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+    const [appState, setAppState] = useState();
+  
+useEffect(() => {     
+    const getData = async () => {  
+      await axios.get('https://api.thedogapi.com/v1/breeds?limit=10&page=0')  
+      .then(res => { 
+        const allCards = res.data;
+        setAppState(allCards); 
+      })  
+      .catch(err => {  
+        alert(err)  
+      });  
+    }  
+    getData()  
+  }, [])
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+        <Header/>
+          <main>
+            <Routes>
+              <Route path='/' component={() => <Home store={appState}/>} exact/>
+              <Route path='/product' component={() => <Product store={appState}/>} exact/>
+            </Routes>
+          </main>
+        <Footer/>
     </div>
-  )
+  );
 }
 
-export default App
+
+
+export default App;

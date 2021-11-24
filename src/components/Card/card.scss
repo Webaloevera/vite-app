@@ -1,0 +1,16 @@
+.card {
+    img {
+        width: 100%;
+    }
+    .card__text {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    p:first-child {
+        color: #777;
+        font-size: 14px;
+    }
+}
+}
