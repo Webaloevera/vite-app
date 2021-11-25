@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import {Card} from '../components';
+import PropTypes from 'prop-types';
 import '../styles/product.css'
 
-const Product = (props) => {
+const Product = ({store}) => {
 
     useEffect(() => {
         document.title = "Product Page";
@@ -12,11 +13,14 @@ const Product = (props) => {
         <div className="product__wrapper">
             <h1>Product Page</h1>
             <div className="cards">
-            {(props.store || []).map((item) => <Card items={item} key={item.id}/>)}
+            {(store || []).map((item) => <Card items={item} key={item.id}/>)}
             </div>
         </div>
     )
 }
 
+Product.propTypes = {
+    store: PropTypes.array
+  };
 
 export default Product;
