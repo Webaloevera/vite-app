@@ -24,7 +24,7 @@
 
 @media (max-width: 960px) { 
     .cards .card {
-        @apply  m-auto;
+        @apply  m-0;
             width: calc(50% - 5px);
         }
  }

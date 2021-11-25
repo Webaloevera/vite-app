@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import React, { useEffect, useState } from 'react';
-import { Header, Footer, ImagePreloader } from './components';
+import { Header, Footer } from './components';
 import { Home, Product } from './pages';
 import axios from "axios";
 import './styles/app.css';
@@ -32,9 +32,6 @@ useEffect(() => {
               <Route path='/' element={<Home store={appState}/>} exact/>
               <Route path='/product' element={<Product store={appState}/>} exact/>
             </Routes>
-            {
-            <ImagePreloader src={'https://cdn2.thedogapi.com/images/rkiByec47.jpg'} alt={'123'}/> 
-            }
           </main>
         <Footer/>
     </div>

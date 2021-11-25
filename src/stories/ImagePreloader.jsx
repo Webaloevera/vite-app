@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import PropTypes from 'prop-types';
 import 'react-loading-skeleton/dist/skeleton.css'
-import './imagePreloader.css';
 
 
 const IMG_STATUS = {
@@ -11,8 +10,7 @@ const IMG_STATUS = {
     FAILED: 2
 }
 
-const ImagePreloader =  ({src, alt}) =>  {
-   
+export const ImagePreloader =  ({src, alt}) =>  {
     const [status, setStatus] = useState(IMG_STATUS.LOADING)
 
     useEffect(() => {
@@ -56,6 +54,10 @@ ImagePreloader.propTypes = {
     alt: PropTypes.string
   };
 
-export default ImagePreloader;
+  ImagePreloader.defaultProps = {
+    alr: 'Albert',
+    src: 'https://cdn.britannica.com/60/8160-050-08CCEABC/German-shepherd.jpg',
+  };
+
 
 
