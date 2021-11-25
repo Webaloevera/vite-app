@@ -5,8 +5,8 @@ const Card = (props) => {
 
     return (
         <div className="card">
-            {/* <img src={props.items.image.url} alt={props.items.name}/> */}
-            <img src={"https://cdn.britannica.com/60/8160-050-08CCEABC/German-shepherd.jpg"} />
+            <img src={props.items.image.url} alt={props.items.name}/>
+
             <div className="card__text">
                 <p>{props.items.name}</p>
                 <p>{props.items.bred_for}</p>

@@ -3,7 +3,7 @@
 }
 
 .home__wrapper h1 {
-    @apply px-7;
+    @apply px-7 text-2xl;
 }
 
 
@@ -49,4 +49,8 @@
         left: -0.313rem;
         content: "";
         @apply z-0 absolute bg-white;
+    }
+
+    .home-slider .slick-prev:before, .slick-next:before {
+        font-size: 1.875rem !important;
     }
