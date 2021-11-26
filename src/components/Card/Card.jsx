@@ -2,21 +2,31 @@ import React from 'react'
 import './card.css'
 import { ImagePreloader } from '../../components'
 import PropTypes from 'prop-types';
+import {
+    Link
+  } from "react-router-dom";
+
 const Card = (props) => {
 
     return (
+        
         <div className="card">
-            <ImagePreloader width="300px" height="200px" src={props.items.image.url} alt={props.items.image.url} />
+            <Link to={`/post/${props.id}`}>
+            <ImagePreloader width="300px" height="200px" src={props.image} alt={props.image} />
             <div className="card__text">
-                <p>{props.items.name}</p>
-                <p>{props.items.bred_for}</p>
+                <p>{props.name}</p>
+                <p>{props.breed}</p>
             </div>
+            </Link>
         </div>
+        
     )
 }
 
     Card.propTypes = {
-        items: PropTypes.object.isRequired
+        name: PropTypes.string.isRequired,
+        breed: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
 }
 
 
