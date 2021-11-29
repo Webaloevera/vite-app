@@ -28,6 +28,7 @@ const CreatePanel = () => {
     const [name, setName] = useState('');
     const [breed, setBreed] = useState('');
     const [image, setImage] = useState('');
+    const [isEdit, setisEdit] = useState(false);
 
 
 
@@ -38,7 +39,6 @@ const CreatePanel = () => {
 
 
     function submitHandler(event) {
-        
         event.preventDefault()
 
         if(name.trim() && breed.trim() && image.trim()) {
@@ -51,11 +51,11 @@ const CreatePanel = () => {
             const arrs = [...newCards, newProduct];
             setNewCards(arrs)
                 axios({
-                    method: 'post',
+                    method: isEdit ? 'put' : 'post',
                     headers: {
                         'Access-Control-Allow-Origin': '*',
                     },
-                    url: 'http://localhost:3001/products',
+                    url: 'http://localhost:3001/products' +( isEdit ? '/'+isEdit : ''),
                     data: newProduct
                     })
                     .then((r) => {
@@ -67,7 +67,8 @@ const CreatePanel = () => {
                 
                 setName('')
                 setBreed('')
-                setImage('')        
+                setImage('') 
+                setisEdit(false)     
             }
     }
     
@@ -79,7 +80,7 @@ const deleteCard = (id) => {
         },
         url: 'http://localhost:3001/products/' + id,
      })
-    .then((r) => {
+    .then(() => {
         setNewCards(newCards.filter(function(item) {
             return item._id !== id
         }));
@@ -89,14 +90,16 @@ const deleteCard = (id) => {
         alert(e);
     });
 }
-
+console.log(isEdit)
 
 const setInput = (item) => {
     setName(item.name);
     setBreed(item.breed);
     setImage(item.image);
-    console.log(item._id)
+    setisEdit(item._id)
+    console.log(isEdit)
 }
+
 
     return (
             <div className="creator">
@@ -106,7 +109,7 @@ const setInput = (item) => {
                 {openAddCard && 
                 <div className="creator-cards">
                 <div className="creator__cards">
-                        <form onSubmit={submitHandler} ref={formRef} encType="multipart/form-data">
+                        <form onSubmit={ submitHandler } ref={formRef} encType="multipart/form-data">
                         <div className="input">
                         <label htmlFor="name">Name:</label>
                         <input type="text" name="name" value={name} onChange={event => setName(event.target.value)} />
@@ -124,7 +127,7 @@ const setInput = (item) => {
                 </div>
                 <div className="creator-list">         
                 {
-                    newCards.map((item) => <div><Card image={item.image} name={item.name} breed={item.breed} key={item._id}/><div className="creator__editing-panel"><button onClick={() => deleteCard(item._id)}>delete</button><button onClick={() => setInput(item, formRef.current.children)}>editing</button></div></div>)
+                    newCards.map((item) => <div key={item._id} ><Card image={item.image} name={item.name} breed={item.breed} key={item._id}/><div className="creator__editing-panel"><button onClick={() => deleteCard(item._id)}>delete</button><button onClick={() => setInput(item, formRef.current.children)}>editing</button></div></div>)
                 }
                 </div>
                 </div>}
