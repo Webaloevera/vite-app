@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router";
 import React, { useEffect, useState } from 'react';
 import { Header, Footer } from './components';
-import { Home, Product } from './pages';
+import { Home, Product, CreatePanel } from './pages';
 import ProductPost  from './ProductPost';
 import axios from "axios";
 import './styles/app.css';
@@ -35,6 +35,7 @@ useEffect(() => {
               <Route path='/' element={<Home store={appState}/>} exact/>
               <Route path='/product' element={<Product store={appState}/>} exact/>
               <Route path="/post/:id" element={<ProductPost />} exact/>
+              <Route path="/creator" element={<CreatePanel />} exact/>
             </Routes>
           </main>
         <Footer/>

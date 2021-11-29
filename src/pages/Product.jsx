@@ -19,8 +19,6 @@ const Product = ({store}) => {
     )
 }
 
-
-
 Product.propTypes = {
     store: PropTypes.array
   };

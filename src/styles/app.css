@@ -3,5 +3,5 @@
 }
 
 main {
-    @apply flex-grow py-2.5 px-5;
+    @apply flex-grow  px-5;
  }

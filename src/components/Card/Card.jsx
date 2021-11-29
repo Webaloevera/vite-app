@@ -24,6 +24,7 @@ const Card = (props) => {
 }
 
     Card.propTypes = {
+        id: PropTypes.string,
         name: PropTypes.string.isRequired,
         breed: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
