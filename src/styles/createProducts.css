@@ -6,7 +6,7 @@
     @apply p-2.5;
 }
 
-.creator__cards {
+.create-edit__cards {
     @apply bg-green-100 my-2.5;
 }
 

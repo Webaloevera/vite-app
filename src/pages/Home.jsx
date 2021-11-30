@@ -56,7 +56,7 @@ const settings = {
         <div className="home__wrapper">
             <h1>Home Page</h1>
             <Slider className="home-slider" {...settings}>
-          {(store || []).slice(0, 8).map((item) => <Card id={item.id}  image={item.image} name={item.name} breed={item.breed} key={item.id}/>)}
+          {(store || []).slice(0, 8).map((item) => <Card id={item._id}  image={item.image} name={item.name} breed={item.breed} key={item._id}/>)}
         </Slider>
         </div>
     )

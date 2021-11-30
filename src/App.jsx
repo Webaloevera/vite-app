@@ -1,8 +1,7 @@
 import { Route, Routes } from "react-router";
 import React, { useEffect, useState } from 'react';
 import { Header, Footer } from './components';
-import { Home, Product, CreatePanel } from './pages';
-import ProductPost  from './ProductPost';
+import { Home, Products, CreateProducts, Product, ProductEdit } from './pages';
 import axios from "axios";
 import './styles/app.css';
 
@@ -17,7 +16,6 @@ useEffect(() => {
       .then(res => { 
         const allCards = res.data;
         setAppState(allCards);
-        // console.log(allCards) 
       })  
       .catch(err => {  
         alert(err)  
@@ -33,9 +31,10 @@ useEffect(() => {
           <main>
             <Routes>
               <Route path='/' element={<Home store={appState}/>} exact/>
-              <Route path='/product' element={<Product store={appState}/>} exact/>
-              <Route path="/post/:id" element={<ProductPost />} exact/>
-              <Route path="/creator" element={<CreatePanel />} exact/>
+              <Route path='/products' element={<Products store={appState}/>} exact/>
+              <Route path="/product/:id" element={<Product />} exact/>
+              <Route path="/products/create" element={<CreateProducts />} exact/>
+              <Route path="/products/:id/edit" element={<ProductEdit />} exact/>
             </Routes>
           </main>
         <Footer/>
