@@ -24,11 +24,12 @@ const CreatePanel = () => {
       }, [])
 
 
-    const [openAddCard, setDescOpenAddCard] = useState(false)
+    const [openAddCard, setDescOpenAddCard] = useState(false);
+    const [isEdit, setisEdit] = useState(false);
     const [name, setName] = useState('');
     const [breed, setBreed] = useState('');
     const [image, setImage] = useState('');
-    const [isEdit, setisEdit] = useState(false);
+    
 
 
 
@@ -55,7 +56,7 @@ const CreatePanel = () => {
                     headers: {
                         'Access-Control-Allow-Origin': '*',
                     },
-                    url: 'http://localhost:3001/products' +( isEdit ? '/'+isEdit : ''),
+                    url: 'http://localhost:3001/products' + ( isEdit ? '/'+ isEdit : ''),
                     data: newProduct
                     })
                     .then((r) => {
@@ -64,15 +65,15 @@ const CreatePanel = () => {
                 .catch((e) => {
                     console.log(e)
                 });
-                
+
                 setName('')
                 setBreed('')
                 setImage('') 
                 setisEdit(false)     
-            }
+        }
     }
     
-const deleteCard = (id) => {
+const deleteCard = id => {
     axios({
         method: 'delete',
         headers: {
@@ -90,7 +91,6 @@ const deleteCard = (id) => {
         alert(e);
     });
 }
-console.log(isEdit)
 
 const setInput = (item) => {
     setName(item.name);
@@ -127,7 +127,13 @@ const setInput = (item) => {
                 </div>
                 <div className="creator-list">         
                 {
-                    newCards.map((item) => <div key={item._id} ><Card image={item.image} name={item.name} breed={item.breed} key={item._id}/><div className="creator__editing-panel"><button onClick={() => deleteCard(item._id)}>delete</button><button onClick={() => setInput(item, formRef.current.children)}>editing</button></div></div>)
+                    newCards.map((item) => <div key={item._id} >
+                        <Card image={item.image} name={item.name} breed={item.breed} key={item._id}/>
+                        <div className="creator__editing-panel">
+                            <button onClick={() => deleteCard(item._id)}>delete</button>
+                            <button onClick={() => setInput(item, formRef.current.children)}>editing</button>
+                            </div>
+                        </div>)
                 }
                 </div>
                 </div>}
