@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect} from "react";
 import axios from "axios";
 import {Card} from '../components';
 import '../styles/createProducts.css';
@@ -6,7 +6,6 @@ import '../styles/createProducts.css';
 
 const CreateProducts = () => {
 
-    const formRef = useRef(0);
     const [newCards, setNewCards] = useState([]);
 
     const getData = () => {  
@@ -25,7 +24,6 @@ const CreateProducts = () => {
       }, []);
 
  
-    const [isEdit, setisEdit] = useState(false);
     const [name, setName] = useState('');
     const [breed, setBreed] = useState('');
     const [image, setImage] = useState('');
@@ -36,13 +34,6 @@ const CreateProducts = () => {
     const [country, setCountry] = useState('');
     const [color, setColor] = useState('');
 
-    
-   const submitHandler = (event) => {
-    event.preventDefault()
-
-        if(isEdit) submitEdit(event);
-        else submitCreate(event);
-   }
 
    function submitCreate(event) {
     event.preventDefault()
@@ -59,6 +50,7 @@ const CreateProducts = () => {
             color
         };
 
+   
         const arrs = [...newCards, newProduct];
         setNewCards(arrs)
 
@@ -70,84 +62,30 @@ const CreateProducts = () => {
                 url: 'http://localhost:3001/products',
                 data: newProduct
                 })
-                .then((r) => {
+                .then(() => {
             })
             .catch((e) => {
                 console.log(e)
             });
-
-            setName('');
-            setBreed('');
-            setImage('');
-            setPhone('');
-            setPrice('');
-            setAddress('');
-            setDesc('');
-            setCountry('');
-            setColor('');
-            setisEdit(false) 
-            getData()      
+            clearInput();
+            getData();  
     }
-};
+}
 
-      const submitEdit = event => {
-                axios({
-                    method: 'put',
-                    headers: {
-                        'Access-Control-Allow-Origin': '*',
-                    },
-                    url: 'http://localhost:3001/products/' + isEdit,
-                    data: { 
-                                name,
-                                breed,
-                                image,
-                                phone,
-                                price,
-                                address,
-                                desc,
-                                country,
-                                color
-                    }
-                })
-                .then(() => {
-                    getData();
-                })
-                .catch((e) => {
-                    console.log(e)
-                });
 
-                setName('');
-                setBreed('');
-                setImage('');
-                setPhone('');
-                setPrice('');
-                setAddress('');
-                setDesc('');
-                setCountry('');
-                setColor('');
-                setisEdit(false);
 
-      }
 
-    
-const deleteCard = id => {
-    axios({
-        method: 'delete',
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-        },
-        url: 'http://localhost:3001/products/' + id,
-     })
-    .then(() => {
-        setNewCards(newCards.filter(function(item) {
-            return item._id !== id
-        }));
-        alert('deleted');
-    })
-    .catch((e) => {
-        alert(e);
-    });
-};
+const clearInput = () => {
+    setName('');
+    setBreed('');
+    setImage('');
+    setPhone('');
+    setPrice('');
+    setAddress('');
+    setDesc('');
+    setCountry('');
+    setColor('');
+}
 
 const setInput = (item) => {
     setName(item.name);
@@ -168,7 +106,7 @@ const setInput = (item) => {
                 {
                 <div className="creator-cards">
                 <div className="create-edit__cards">
-                        <form onSubmit={ submitHandler } ref={formRef} encType="multipart/form-data">
+                        <form onSubmit={ submitCreate } encType="multipart/form-data">
                         <div className="input">
                         <label htmlFor="name">Name:</label>
                         <input type="text" name="name" value={name} onChange={event => setName(event.target.value)} />
@@ -209,15 +147,10 @@ const setInput = (item) => {
                         </form>
                 </div>
                 <div className="creator-list">         
-                {
-
+                { newCards &&
                     newCards.map((item) => 
                     <div key={item._id}>
                         <Card id={item._id} image={item.image} name={item.name} alt={item.breed} breed={item.breed}/>
-                        <div className="creator__editing-panel">
-                            <button onClick={() => deleteCard(item._id)}>delete</button>
-                            <button onClick={() => setInput(item, formRef.current.children)}>editing</button>
-                        </div>
                     </div>)
                 }
                 </div>

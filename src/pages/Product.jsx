@@ -29,11 +29,11 @@ if (cardId)
     return (
 
         <div className="product">
-            <Card image={cardId.image} name={cardId.name} breed={cardId.breed} key={cardId.id}/>
+            <Card id={id} image={cardId.image} name={cardId.name} breed={cardId.breed} key={cardId.id}/>
         </div>
     )
     else {
-        return ('22222222222222222');
+        return ('Not found...');
     }
   }
 

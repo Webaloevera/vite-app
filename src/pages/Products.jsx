@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import {Card, Filters} from '../components';
+import {Card} from '../components';
 import PropTypes from 'prop-types';
 import '../styles/products.css'
 

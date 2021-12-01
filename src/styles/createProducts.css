@@ -10,6 +10,10 @@
     @apply bg-green-100 my-2.5;
 }
 
+.create-edit__cards .delete {
+    @apply m-2.5 p-2 rounded border-dashed border-4 bg-white border-red-300 w-40;
+}
+
 .creator .input input {
     @apply p-2.5 outline-none;
 }
