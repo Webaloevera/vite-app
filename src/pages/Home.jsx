@@ -1,15 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
 import {Card} from '../components';
 import PropTypes from 'prop-types';
+import axios from "axios";
 import "../styles/home.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const Home = ({store}) => {
+const Home = () => {
   useEffect(() => {
     document.title = "Home Page"
  }, []);
+
+
+ const [data, setData] = useState([])
+
+ useEffect(() => {
+  const getData = async () => {
+    await axios
+      .get("http://localhost:3001/products/")
+      .then((res) => {
+        const store = res.data;
+        setData(store);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+  getData();
+}, []);
 
 const settings = {
       dots: false,
@@ -56,7 +75,7 @@ const settings = {
         <div className="home__wrapper">
             <h1>Home Page</h1>
             <Slider className="home-slider" {...settings}>
-          {(store || []).slice(0, 8).map((item) => <Card id={item._id}  image={item.image} name={item.name} breed={item.breed} key={item._id}/>)}
+          {(data || []).slice(0, 8).map((item) => <Card id={item._id}  image={item.image} name={item.name} breed={item.breed} key={item._id}/>)}
         </Slider>
         </div>
     )

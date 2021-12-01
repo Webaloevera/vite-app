@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router";
 import React, { useEffect, useState } from "react";
 import { Header, Footer } from "./components";
-import { Home, Products, CreateProducts, Product, ProductEdit } from "./pages";
+import { Home, Products, CreateProductPage, Product, ProductEdit } from "./pages";
 import axios from "axios";
 import "./styles/app.css";
 
@@ -29,14 +29,10 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home store={appState} />} exact />
-          <Route
-            path="/products"
-            element={<Products store={appState} />}
-            exact
-          />
+          <Route path="/products" element={<Products store={appState} />} exact/>
           <Route path="/product/:id" element={<Product />} exact />
-          <Route path="/products/create" element={<CreateProducts />} exact />
           <Route path="/products/:id/edit" element={<ProductEdit />} exact />
+          <Route path="/products/create" element={<CreateProductPage/>} exact />
         </Routes>
       </main>
       <Footer />

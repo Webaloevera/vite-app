@@ -1,0 +1,12 @@
+.themed-input {
+    @apply  m-2.5 flex justify-between;
+
+}
+
+.themed-input label {
+    @apply text-center p-2;
+}
+
+.themed-input input{
+    @apply p-2.5 outline-none bg-gray-200;
+}

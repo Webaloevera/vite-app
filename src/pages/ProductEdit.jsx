@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../styles/createProducts.css";
+// import "../styles/createProducts.css";
 
 const ProductEdit = () => {
-    const navigate = useNavigate();
-  let { id } = useParams();
+  const navigate = useNavigate();
+  const { id } = useParams();
   const [name, setName] = useState("");
   const [breed, setBreed] = useState("");
   const [image, setImage] = useState("");
@@ -43,9 +43,9 @@ const ProductEdit = () => {
     setColor(item.country);
   };
 
-  const submitEdit = (event) => {
+  const submitEdit = async (event) => {
     event.preventDefault();
-    axios({
+   await axios({
       method: "put",
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -63,17 +63,12 @@ const ProductEdit = () => {
         color,
       },
     })
-      .then(() => {})
-      .catch((e) => {
-        console.log(e);
-      });
-      clearInput();
-      redirect(`/product/${id}`);
+    redirect(`/product/${id}`);   
   };
 
   const redirect = (str) => {
-    navigate(str)
-}
+    navigate(str);
+  };
 
   const clearInput = () => {
     setName("");
@@ -85,7 +80,7 @@ const ProductEdit = () => {
     setDesc("");
     setCountry("");
     setColor("");
-  }
+  };
 
   const deleteCard = (id) => {
     event.preventDefault();
@@ -98,24 +93,19 @@ const ProductEdit = () => {
     })
       .then(() => {
         clearInput();
-        redirect(`/products`)
+        redirect(`/products`);
       })
       .catch((e) => {
         alert(e);
       });
   };
 
-
-
   return (
     <div className="creator">
-      {
         <div className="creator-cards">
           <div className="create-edit__cards">
-            <form
-              onSubmit={submitEdit}
-              encType="multipart/form-data"
-            >
+            <h2>Create </h2>
+            <form onSubmit={submitEdit} encType="multipart/form-data">
               <div className="input">
                 <label htmlFor="name">Name:</label>
                 <input
@@ -205,7 +195,6 @@ const ProductEdit = () => {
           </div>
           <div className="creator-list"></div>
         </div>
-      }
     </div>
   );
 };

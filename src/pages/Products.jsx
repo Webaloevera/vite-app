@@ -1,9 +1,27 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {Card} from '../components';
 import PropTypes from 'prop-types';
 import '../styles/products.css'
+import axios from "axios";
+const Product = () => {
 
-const Product = ({store}) => {
+   
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+     const getData = async () => {
+       await axios
+         .get("http://localhost:3001/products/")
+         .then((res) => {
+           const store = res.data;
+           setData(store);
+         })
+         .catch((err) => {
+           alert(err);
+         });
+     };
+     getData();
+   }, []);
 
     useEffect(() => {
         document.title = "Product Page";
@@ -14,7 +32,7 @@ const Product = ({store}) => {
             <h1>Product Page</h1>
             {/* <Filters/> */}
             <div className="cards">
-            {(store || []).map((item) => <Card id={item._id} image={item.image} name={item.name} breed={item.breed} key={item._id}/>)}
+            {(data || []).map((item) => <Card id={item._id} image={item.image} name={item.name} breed={item.breed} key={item._id}/>)}
             </div>
         </div>
     )
