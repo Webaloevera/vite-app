@@ -7,10 +7,14 @@
   }
   
   .header nav ul {
-    @apply flex;
+    @apply flex ;
+  }
+
+  .header nav {
+    @apply ml-10;
   }
   
   .header nav ul li a {
-    @apply text-white px-2.5 text-base uppercase ;
+    @apply text-white px-3.5 text-base uppercase ;
   }
   

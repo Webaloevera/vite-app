@@ -15,9 +15,13 @@
 }
 
 .card-link {
-    justify-content: space-between;
+    @apply text-white font-medium justify-between;
 }
 
 .card-link a {
     @apply p-1 px-9 bg-green-300;
+}
+
+.card-link button {
+    @apply p-1 px-9 bg-red-300;
 }

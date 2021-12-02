@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import ThemedInput from "../ThemedInput";
-// import { Card } from "..";
-
-// import "../styles/createProducts.css";
+import PropTypes from "prop-types";
 
 const defaultProductValues = {
   name: "",
@@ -28,8 +26,9 @@ const labels = {
   color: "Color",
 };
 
-const ProductForm = ({ product, onFormSubmit }) => {
+const ProductForm = ({ product, onFormSubmit, submitText }) => {
   const [productState, setProductState] = useState(defaultProductValues);
+  const [emptyErorForm, setEmptyErorForm] = useState(false);
 
   useEffect(() => {
     if (!product) {
@@ -51,26 +50,46 @@ const ProductForm = ({ product, onFormSubmit }) => {
   const handleFormSubmit = useCallback(
     (event) => {
       event.preventDefault();
-      onFormSubmit(productState);
+      const lengthForm = Object.values(productState).filter((item) => item);
+      if (lengthForm.length < 9) {
+        setEmptyErorForm(true);
+        setTimeout(() => {
+          setEmptyErorForm(false);
+        }, 2000);
+      } else {
+        onFormSubmit(productState);
+      }
     },
     [onFormSubmit, productState]
   );
 
   return (
     <form className="form-create-edit" onSubmit={handleFormSubmit}>
-      {Object.keys(productState).map((key) => (
-        <ThemedInput
-          key={key}
-          name={key}
-          label={labels[key]}
-          type="text"
-          value={productState[key]}
-          onChange={handleFormInputChange}
-        />
-      ))}
-      <input type="submit" value="Create" />
+      {Object.keys(productState)
+        .filter((key) => {
+          return key !== "_id" && key !== "__v";
+        })
+        .map((key) => {
+          return (
+            <ThemedInput
+              key={key}
+              name={key}
+              label={labels[key]}
+              type="text"
+              value={productState[key]}
+              onChange={handleFormInputChange}
+            />
+          );
+        })}
+      <input type="submit" value={submitText} />
+      {emptyErorForm && <p>Заполните все поля!</p>}
     </form>
   );
 };
+
+// ProductForm.propTypes = {
+//   product: PropTypes.object,
+//   onFormSubmit: PropTypes.func,
+// };
 
 export default ProductForm;

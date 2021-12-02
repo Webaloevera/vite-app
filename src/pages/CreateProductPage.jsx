@@ -5,25 +5,19 @@ import { useNavigate } from "react-router-dom";
 import "../styles/createProductPage.css";
 
 function CreateProductPage() {
+  const navigate = useNavigate();
 
-const navigate = useNavigate();
-    
-const redirect = (str) => {
-        navigate(str);
-      };
-
-  const addProduct = async (item) => {
+  const addProduct = async (newProduct) => {
     await axios({
       method: "post",
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
       url: "http://localhost:3001/products",
-      data: item,
+      data: newProduct,
     })
       .then((e) => {
-        redirect(`/product/${e.data}`)
-        console.log(e.data)
+        navigate(`/product/${e.data}`);
       })
       .catch((e) => {
         console.log(e);
@@ -33,7 +27,7 @@ const redirect = (str) => {
   return (
     <div className="create__product">
       <h2>Product form</h2>
-      <ProductForm onFormSubmit={addProduct} />
+      <ProductForm submitText='Create' onFormSubmit={addProduct} />
     </div>
   );
 }
