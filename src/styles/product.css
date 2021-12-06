@@ -1,7 +1,31 @@
 .product {
-    @apply flex justify-center items-center h-full;
+    @apply flex h-full max-w-screen-xl m-auto;
+    margin-top: 20px;
 }
 
 .product .card {
-    @apply w-80;
+    /* @apply w-8; */
+    max-width: 500px;
+    margin-right: 20px;
+}
+
+.product-list {
+    min-width: 200px
+}
+
+.product-list ul li {
+    @apply flex justify-between;
+    margin-bottom: 10px;
+}
+
+.card-link {
+    @apply text-white font-medium;
+}
+
+.card-link a {
+    @apply p-1 px-9 bg-green-300 mr-2; 
+}
+
+.card-link button {
+    @apply p-1 px-9 bg-red-300;
 }

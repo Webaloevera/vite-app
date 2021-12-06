@@ -2,11 +2,20 @@ import React, { useEffect } from "react";
 import Slider from "react-slick";
 import { Card } from "../components";
 import PropTypes from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProducts } from "../store/productSlice";
 import "../styles/home.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const Home = ({ store }) => {
+const Home = () => {
+  const products = useSelector((state) => state.products.list);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
   useEffect(() => {
     document.title = "Home Page";
   }, []);
@@ -52,11 +61,12 @@ const Home = ({ store }) => {
       },
     ],
   };
+
   return (
     <div className="home__wrapper">
       <h1>Home Page</h1>
       <Slider className="home-slider" {...settings}>
-        {(store || []).slice(0, 8).map((item) => (
+        {(products || []).slice(0, 8).map((item) => (
           <Card
             id={item._id}
             image={item.image}
@@ -71,7 +81,7 @@ const Home = ({ store }) => {
 };
 
 Home.propTypes = {
-  store: PropTypes.array,
+  products: PropTypes.array,
 };
 
 export default Home;

@@ -1,9 +1,17 @@
 import React, { useEffect } from "react";
 import { Card } from "../components";
 import PropTypes from "prop-types";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchProducts } from "../store/productSlice";
 import "../styles/products.css";
 
-const Product = ({ store }) => {
+const Product = () => {
+  const products = useSelector((state) => state.products.list);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
   useEffect(() => {
     document.title = "Product Page";
   }, []);
@@ -13,7 +21,7 @@ const Product = ({ store }) => {
       <h1>Product Page</h1>
       {/* <Filters/> */}
       <div className="cards">
-        {(store || []).map((item) => (
+        {(products || []).map((item) => (
           <Card
             id={item._id}
             image={item.image}
@@ -28,7 +36,7 @@ const Product = ({ store }) => {
 };
 
 Product.propTypes = {
-  store: PropTypes.array,
+  products: PropTypes.array,
 };
 
 export default Product;

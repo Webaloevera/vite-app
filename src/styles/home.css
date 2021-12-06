@@ -1,20 +1,16 @@
 .home__wrapper {
-    @apply m-auto w-11/12;
+    @apply m-auto max-w-screen-xl m-auto;
 }
 
 .home__wrapper h1 {
-    @apply px-7 text-2xl;
+    @apply text-2xl;
 }
 
 
 .home-slider {
-    @apply gap-5 p-5;
+    @apply gap-5;
     }
 
-    .home-slider .card {
-        width: 95%;
-        @apply m-auto;
-    }
 
     .home-slider .card  img {
         height: 12.5rem;

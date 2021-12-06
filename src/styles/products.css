@@ -1,15 +1,14 @@
 .product__wrapper {
-    @apply  m-auto max-w-5xl;
-    max-width: 57.5rem;
+    @apply  m-auto max-w-5xl max-w-screen-xl;
 }
 
 .product__wrapper h1 {
-    @apply  text-2xl mb-8 font-medium;
+    @apply  text-2xl;
 }
 
 .cards {
-    @apply  m-auto max-w-5xl flex flex-wrap gap-x-2.5 gap-y-2.5;
-    max-width: 57.5rem;
+    @apply  m-auto flex flex-wrap gap-x-2.5 gap-y-2.5;
+
 }
 
 .cards .card {

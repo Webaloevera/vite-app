@@ -1,33 +1,27 @@
-import React from "react";
+import React, { useCallback } from "react";
 import ProductForm from "../components/ProductForm";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/createProductPage.css";
+import { createProduct } from "../store/productSlice";
+import { useDispatch } from "react-redux";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 function CreateProductPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const addProduct = async (newProduct) => {
-    await axios({
-      method: "post",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-      url: "http://localhost:3001/products",
-      data: newProduct,
-    })
-      .then((e) => {
-        navigate(`/product/${e.data}`);
-      })
-      .catch((e) => {
-        console.log(e);
+  const onCreateProduct = useCallback((newProduct) => {
+    dispatch(createProduct(newProduct))
+      .then(unwrapResult)
+      .then((result) => {
+        navigate(`/product/${result._id}`);
       });
-  };
+  }, []);
 
   return (
     <div className="create__product">
       <h2>Product form</h2>
-      <ProductForm submitText='Create' onFormSubmit={addProduct} />
+      <ProductForm onFormSubmit={onCreateProduct} submitText="Create" />
     </div>
   );
 }

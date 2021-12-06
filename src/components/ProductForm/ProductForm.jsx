@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import ThemedInput from "../ThemedInput";
-import PropTypes from "prop-types";
+
+// import PropTypes from "prop-types";
 
 const defaultProductValues = {
   name: "",
@@ -90,6 +91,7 @@ const ProductForm = ({ product, onFormSubmit, submitText }) => {
 // ProductForm.propTypes = {
 //   product: PropTypes.object,
 //   onFormSubmit: PropTypes.func,
+//   submitText: PropTypes.string
 // };
 
 export default ProductForm;

@@ -1,25 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { ImagePreloader } from "../../components";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import "./card.css";
 
 const Card = (props) => {
-  const deleteCard = (id) => {
-    axios({
-      method: "delete",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-      url: "http://localhost:3001/products/" + id,
-    })
-      .then(() => {})
-      .catch((e) => {
-        alert(e);
-      });
-  };
-
   return (
     <div className="card">
       <Link to={`/product/${props.id}`}>
@@ -34,10 +19,7 @@ const Card = (props) => {
           <p>{props.breed}</p>
         </div>
       </Link>
-      <div className="card-link">
-        <Link to={`/products/${props.id}/edit/`}>Edit</Link>
-        <button onClick={() => deleteCard(props.id)}>Delete</button>
-      </div>
+
     </div>
   );
 };

@@ -3,15 +3,11 @@ import "./filters.css";
 
 const Filters = () => {
 
-// const setDesc = e => [
-//   console.log(e)
-// ]
-
   return (
     <div className="filter">
       <div className="filter__controller">
         <p>Select:</p>
-        <select name="" onChange={(event) => setDesc(event.target.value)}>
+        <select name="">
           <option value="">name</option>
           <option value="">name</option>
           <option value="">name</option>

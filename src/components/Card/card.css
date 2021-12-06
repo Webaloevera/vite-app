@@ -3,25 +3,10 @@
   }
 
 .card .card__text {
-    @apply container text-sm overflow-ellipsis overflow-hidden box-border;
+    @apply container text-sm overflow-ellipsis truncate overflow-hidden box-border;
 }
 
 .card .card__text p:first-child {
     @apply text-gray-400; 
 }
 
-.card-link {
-    @apply flex;
-}
-
-.card-link {
-    @apply text-white font-medium justify-between;
-}
-
-.card-link a {
-    @apply p-1 px-9 bg-green-300;
-}
-
-.card-link button {
-    @apply p-1 px-9 bg-red-300;
-}
