@@ -1,9 +1,12 @@
 .product__wrapper {
     @apply  m-auto max-w-5xl max-w-screen-xl;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .product__wrapper h1 {
     @apply  text-2xl;
+    margin-bottom: 15px;
 }
 
 .cards {

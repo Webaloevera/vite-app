@@ -31,7 +31,7 @@ export const getByIdProduct = createAsyncThunk(
 
 export const createProduct = createAsyncThunk(
   "products/createProduct",
-  async function (newProduct, { rejectWithValue, dispatch }) {
+  async function (newProduct, { dispatch }) {
     const response = await axios.post(
       `http://localhost:3001/products/`,
       newProduct
@@ -43,7 +43,7 @@ export const createProduct = createAsyncThunk(
 
 export const deleteProduct = createAsyncThunk(
   "products/deleteProduct",
-  async function (id, { rejectWithValue, dispatch }) {
+  async function (id, { dispatch }) {
     await axios.delete(`http://localhost:3001/products/${id}`);
     dispatch(removeProduct(id));
   }
@@ -78,29 +78,29 @@ const productSlice = createSlice({
       state.list = action.payload;
       return state;
     },
-    [fetchProducts.rejected]: (state, action) => state,
+    [fetchProducts.rejected]: (state) => state,
     // createProduct
     [createProduct.pending]: (state) => state,
-    [createProduct.fulfilled]: (state, action) => {
+    [createProduct.fulfilled]: (state) => {
       return state;
     },
-    [createProduct.rejected]: (state, action) => state,
+    [createProduct.rejected]: (state) => state,
     // deleteProducts
-    [deleteProduct.pending]: (state, action) => {
+    [deleteProduct.pending]: (state) => {
       return state;
     },
-    [deleteProduct.fulfilled]: (state, action) => {
+    [deleteProduct.fulfilled]: (state) => {
       return state;
     },
-    [deleteProduct.rejected]: (state, action) => state,
+    [deleteProduct.rejected]: (state) => state,
     // editProducts
-    [editProduct.pending]: (state, action) => {
+    [editProduct.pending]: (state) => {
       return state;
     },
-    [editProduct.fulfilled]: (state, action) => {
+    [editProduct.fulfilled]: (state) => {
       return state;
     },
-    [editProduct.rejected]: (state, action) => state,
+    [editProduct.rejected]: (state) => state,
   },
 });
 

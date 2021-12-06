@@ -1,9 +1,12 @@
 .home__wrapper {
-    @apply m-auto max-w-screen-xl m-auto;
+    @apply max-w-screen-xl m-auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .home__wrapper h1 {
     @apply text-2xl;
+    margin-bottom: 15px;
 }
 
 
@@ -11,7 +14,8 @@
     @apply gap-5;
     }
 
-
+    .slick-list {margin: 0 -5px;}
+    .slick-slide>div {padding: 0 5px;}
     .home-slider .card  img {
         height: 12.5rem;
         @apply  object-cover;
