@@ -1,0 +1,15 @@
+.form-create-edit {
+    @apply grid max-w-2xl grid-cols-2 gap-1.5 auto-cols-auto m-auto; 
+}
+
+@media (max-width: 640px) {
+    .form-create-edit {
+        @apply grid-cols-1;
+    }
+  }
+
+@media (max-width: 350px) {
+    .form-create-edit .themed-input input {
+        @apply w-40;
+    }
+  }

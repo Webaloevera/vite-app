@@ -3,7 +3,6 @@
 }
 
 .header__wrapper {
-  /* @apply m-auto max-w-screen-xl; */
   width: 1280px;
   min-width: 300px;
   margin: auto;
@@ -11,20 +10,22 @@
 
 .header__inner {
   @apply p-2.5 flex text-white;
+  max-width: 370px;
+  justify-content: space-between
 }
 
 .logo {
-  @apply w-20;
+  @apply w-20 self-center;
 }
 
 .header nav ul {
-  @apply flex;
+  @apply flex flex-wrap;
 }
 
 .header nav {
-  @apply ml-10;
+  /* @apply ml-2; */
 }
 
 .header nav ul li a {
-  @apply text-white px-3.5 text-base uppercase;
+  @apply text-white pl-1 pr-2 text-base uppercase;
 }
