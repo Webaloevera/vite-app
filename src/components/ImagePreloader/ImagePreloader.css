@@ -1,7 +1,0 @@
-.isLoading {
-    @apply  flex flex-wrap;
-}
-
-.isLoading img, p{
-    @apply  w-40 flex ; 
-}
