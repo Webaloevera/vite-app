@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProductForm from "../components/ProductForm/ProductForm";
 import { useNavigate, useParams } from "react-router-dom";
-import "../styles/EditProductPage.css";
 import { useDispatch } from "react-redux";
 import { getByIdEdit, editProduct, fetchProducts } from "../redux/productSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
