@@ -8,7 +8,7 @@ import {
   getByIdProduct,
   deleteProduct,
   fetchProducts,
-} from "../store/productSlice";
+} from "../redux/productSlice";
 import { unwrapResult } from "@reduxjs/toolkit";
 import { Link } from "react-router-dom";
 import "../styles/product.css";
@@ -67,26 +67,26 @@ const Product = () => {
               <p>{cardId.country}</p>
             </li>
             <li>
-              <p>Price</p>
+              <p>Price:</p>
               <p>{cardId.price}</p>
             </li>
             <li>
-              <p>Description</p>
-              <p>{cardId.desc}</p>
-            </li>
-            <li>
-              <p>Phone</p>
+              <p>Phone:</p>
               <p>{cardId.phone}</p>
             </li>
             <li>
-              <p></p>
-              <p></p>
+              <p>Description:</p>
+              <p>{cardId.desc}</p>
+            </li>
+            <li>
+              <p>Address:</p>
+              <p>{cardId.address}</p>
             </li>
           </ul>
-        </div>
-        <div className="card-link">
-          <Link to={`/products/${id}/edit/`}>Edit</Link>
-          <button onClick={() => onDeleteProduct(id)}>Delete</button>
+          <div className="product-link">
+            <Link to={`/products/${id}/edit/`}>Edit</Link>
+            <button onClick={() => onDeleteProduct(id)}>Delete</button>
+          </div>
         </div>
       </div>
     );

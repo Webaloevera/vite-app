@@ -1,20 +1,30 @@
 .header {
-    @apply p-2.5 flex bg-dark-green text-white flex-none items-center;
-  }
-  
-  .logo {
-    @apply w-20;
-  }
-  
-  .header nav ul {
-    @apply flex ;
-  }
+  @apply flex bg-dark-green flex-none;
+}
 
-  .header nav {
-    @apply ml-10;
-  }
-  
-  .header nav ul li a {
-    @apply text-white px-3.5 text-base uppercase ;
-  }
-  
+.header__wrapper {
+  /* @apply m-auto max-w-screen-xl; */
+  width: 1280px;
+  min-width: 300px;
+  margin: auto;
+}
+
+.header__inner {
+  @apply p-2.5 flex text-white;
+}
+
+.logo {
+  @apply w-20;
+}
+
+.header nav ul {
+  @apply flex;
+}
+
+.header nav {
+  @apply ml-10;
+}
+
+.header nav ul li a {
+  @apply text-white px-3.5 text-base uppercase;
+}

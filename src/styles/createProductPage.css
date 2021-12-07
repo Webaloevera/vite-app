@@ -1,7 +1,11 @@
 .create__product {
+    width: max-content;
+    margin: auto;
+    margin-top: 60px;
 }
 .create__product h2 {
-    @apply font-medium text-xl p-2.5
+    @apply text-2xl p-2.5;
+    padding-left: 5px;
 }
 
 /* .create__product form {

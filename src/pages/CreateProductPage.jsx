@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import ProductForm from "../components/ProductForm";
 import { useNavigate } from "react-router-dom";
 import "../styles/createProductPage.css";
-import { createProduct } from "../store/productSlice";
+import { createProduct } from "../redux/productSlice";
 import { useDispatch } from "react-redux";
 import { unwrapResult } from "@reduxjs/toolkit";
 

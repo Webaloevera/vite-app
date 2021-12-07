@@ -1,11 +1,12 @@
 .product {
-    @apply flex h-full max-w-screen-xl m-auto;
-    margin-top: 20px;
+    @apply flex h-full max-w-screen-xl flex-wrap m-auto;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .product .card {
     /* @apply w-8; */
-    max-width: 500px;
+    max-width: 400px;
     margin-right: 20px;
 }
 
@@ -16,16 +17,23 @@
 .product-list ul li {
     @apply flex justify-between;
     margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.card-link {
+.product-list ul li p:first-child {
+    @apply truncate font-semibold;
+}
+
+.product-link {
     @apply text-white font-medium;
 }
 
-.card-link a {
+.product-link a {
     @apply p-1 px-9 bg-green-300 mr-2; 
 }
 
-.card-link button {
+.product-link button {
     @apply p-1 px-9 bg-red-300;
 }

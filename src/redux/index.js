@@ -1,2 +1,8 @@
-export * from './store';
-export * from './productsApi';
+import { configureStore } from "@reduxjs/toolkit";
+import productSlice from "./productSlice";
+
+export default configureStore({
+  reducer: {
+    products: productSlice,
+  },
+});

@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { Card } from "../components";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchProducts } from "../store/productSlice";
+import { fetchProducts } from "../redux/productSlice";
 import "../styles/home.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -29,7 +29,7 @@ const Home = () => {
     initialSlide: 0,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1280,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
