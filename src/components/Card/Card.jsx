@@ -4,19 +4,19 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./card.css";
 
-const Card = (props) => {
+const Card = ({id, image, breed, name}) => {
   return (
     <div className="card">
-      <Link to={`/product/${props.id}`}>
+      <Link to={`/product/${id}`}>
         <ImagePreloader
           width="300px"
           height="200px"
-          src={props.image}
-          alt={props.breed}
+          imageURL={image}
+          alt={breed}
         />
         <div className="card__text">
-          <p>{props.name}</p>
-          <p>{props.breed}</p>
+          <p>{name}</p>
+          <p>{breed}</p>
         </div>
       </Link>
 

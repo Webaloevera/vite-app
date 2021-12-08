@@ -10,7 +10,7 @@ const IMG_STATUS = {
     FAILED: 2
 }
 
-const ImagePreloader =  ({src, alt}) =>  {
+const ImagePreloader =  ({imageURL, alt}) =>  {
    
     const [status, setStatus] = useState(IMG_STATUS.LOADING)
 
@@ -23,8 +23,8 @@ const ImagePreloader =  ({src, alt}) =>  {
         newImage.onerror = () => {
             setStatus(IMG_STATUS.FAILED)
         }
-        newImage.src = src    
-    },[src])
+        newImage.src = imageURL    
+    },[imageURL])
 
     const getTemplate = (status) => {
         switch(status) {
@@ -32,7 +32,7 @@ const ImagePreloader =  ({src, alt}) =>  {
                 return ( <Skeleton width={300}  height={200} ></Skeleton> )
             }
             case IMG_STATUS.LOADED : {
-                return ( <img src={src} alt={alt} /> )
+                return ( <img src={imageURL} alt={alt} /> )
             }
             case IMG_STATUS.FAILED : {
                 return ( <img src='https://uzex.uz/images/blog/image_not_found.png' alt='not found' /> )
@@ -41,20 +41,18 @@ const ImagePreloader =  ({src, alt}) =>  {
     }
 
   return (
-        <React.Fragment>    
+        <>    
             {
                 getTemplate(status)
             }
-        </React.Fragment> 
+        </> 
 
   );
 }
 
 ImagePreloader.propTypes = {
-    src: PropTypes.string,
+    imageURL: PropTypes.string,
     alt: PropTypes.string
   };
 
 export default ImagePreloader;
-
-
