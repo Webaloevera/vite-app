@@ -1,0 +1,45 @@
+.background-full {
+    position: relative;
+}
+
+.background-full {
+    @apply w-full;
+}
+
+.background-full img {
+    width: 100%;
+    height: calc(100vh - 44px);
+    object-fit: cover;
+}
+
+.background-full div {
+    height: max-content;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+@media (max-width: 768px) {
+    .background-full {
+        padding-bottom: 56.25%;
+    }
+
+    .background-full img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+  }
+
+
+/* Delete style */
+.background-full div {
+    text-align: center;
+    color: #fff;
+    font-size: 2em;
+}
+
+

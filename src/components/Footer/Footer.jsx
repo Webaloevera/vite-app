@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className="footer">
             <div className="footer__wrapper">
                 <div className="copyright">
-                    <p data-testid="copyright">2021 &#169; COPYRIGHT</p>
+                    <p>2021 &#169; COPYRIGHT</p>
                 </div>
             </div>
         </footer>

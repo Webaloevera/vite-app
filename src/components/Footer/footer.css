@@ -1,5 +1,5 @@
 .footer {
-    @apply bg-dark-green h-20 mt-auto flex-none;
+    @apply bg-dark-green h-20;
   }
 
 .footer__wrapper { 

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./card.css";
 
 const Card = ({id, image, breed, name}) => {
+
   return (
     <div className="card">
       <Link to={`/product/${id}`}>

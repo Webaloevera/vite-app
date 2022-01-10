@@ -1,0 +1,7 @@
+.pagination .pages {
+    @apply flex;
+}
+
+.pagination .pages div{
+    @apply p-3.5;
+}

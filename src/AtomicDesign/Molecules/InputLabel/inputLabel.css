@@ -1,0 +1,7 @@
+.validate-input {
+  @apply flex justify-between;
+}
+
+.validate-input label {
+  @apply text-center p-2;
+}

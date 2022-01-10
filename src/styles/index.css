@@ -2,12 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #root{
-  @apply h-full m-0;
+html, body, .App,  #root{
+  @apply h-full;
 }
 
-body {
-  @apply flex flex-col font-sans overflow-y-scroll;
+body{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-
+header{
+  flex: 0 0 auto;
+}
+main{
+  flex: 1 0 auto;
+}
+footer{
+  flex: 0 0 auto;
+}

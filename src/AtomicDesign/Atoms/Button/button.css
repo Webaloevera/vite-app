@@ -1,0 +1,4 @@
+.button {
+    @apply p-2.5 outline-none bg-green-200;
+}
+  

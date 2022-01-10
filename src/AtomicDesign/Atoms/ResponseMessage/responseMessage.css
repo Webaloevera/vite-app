@@ -1,0 +1,19 @@
+.message {
+    @apply max-w-xs rounded-md p-2;
+}
+
+.message p {
+    @apply font-mono font-medium text-current ;
+}
+
+.message.error {
+    @apply bg-red-100;
+}
+
+.message.good {
+    @apply bg-green-100;
+}
+
+.message.simple {
+    @apply bg-yellow-100;
+}

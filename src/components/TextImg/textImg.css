@@ -1,0 +1,58 @@
+.info {
+    display: flex;
+}
+
+.info div {
+    width: 50%;
+}
+
+.info-text {
+    padding: 10px;
+    padding-left: 30px;
+    display: flex;
+    align-self: center;
+}
+
+.info-textP {
+    opacity: 0;
+}
+
+.info-textP.animate {
+    animation-name: fadeIn;
+    animation-duration: .7s;
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    20% { opacity: 0; }
+    40% { opacity: 0.3; }
+    60% { opacity: 0.5; }
+    80% { opacity: 0.9; }
+    100% { opacity: 1; }
+  }
+
+.info-img {
+    overflow: hidden;
+}
+
+.info-img img {
+    transition: all .7s ease-out;
+}
+
+.info-img img:hover {
+    transition: all .7s ease-out;
+    transform: scale(1.1);
+}
+
+
+
+@media (max-width: 768px) {
+    .info {
+        flex-direction: column !important;
+        align-items: center;
+    }
+    .info div {
+        width: 100%;
+    }
+  }

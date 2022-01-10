@@ -1,0 +1,4 @@
+.form {
+  @apply grid max-w-xs grid-cols-1 gap-1.5 auto-cols-auto m-auto;
+}
+

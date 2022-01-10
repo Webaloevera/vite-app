@@ -29,13 +29,13 @@ const ImagePreloader =  ({imageURL, alt}) =>  {
     const getTemplate = (status) => {
         switch(status) {
             case IMG_STATUS.LOADING : {
-                return ( <Skeleton width={300}  height={200} ></Skeleton> )
+                return ( <div className="loading" data-testid="loading" ><Skeleton width={300}  height={200} ></Skeleton></div> )
             }
             case IMG_STATUS.LOADED : {
-                return ( <img src={imageURL} alt={alt} /> )
+                return ( <img className="loaded" src={imageURL} data-testid="loaded" alt={alt} /> )
             }
             case IMG_STATUS.FAILED : {
-                return ( <img src='https://uzex.uz/images/blog/image_not_found.png' alt='not found' /> )
+                return ( <img className="failed" data-testid="failed" src='https://uzex.uz/images/blog/image_not_found.png' alt='not found' /> )
             }
         }
     }
